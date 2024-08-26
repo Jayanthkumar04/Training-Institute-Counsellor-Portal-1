@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+     
+     <li class="nav-item">
+        <a class="nav-link" th:href="@{/dashboard}">View Dashboard</a>
+      </li>
+      
+      <li class="nav-item">		
+        <a class="nav-link" th:href="@{/}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " th:href="@{/enquiry}">Add Enquiry</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " th:href="@{/viewEnquiries}">View Enquiry</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " th:href="@{/logout}">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+  <h1>Add Enquiry Here</h1>
+  <p th:text="${smsg}" style="color:green"></p>
+  <p th:text="${emsg}" style="color:red"></p>
+
+  <form th:action="@{/addEnquiry}" th:object="${enquiry}" method="post" >
+  
+  <input type="hidden" th:field=*{enqId} />
+    <table>
+      <tr>
+        <td><label name="name2"> Name:</label></td>
+        <td><input type="text" th:field="*{studentName}" name="name2" required></td>
+         <input type="hidden" th:field=*{enqId}>
+    
+      </tr>
+      <tr>
+        <td><label name="Phno2">Phno:</label></td>
+        <td><input type="text" th:field="*{studentPhno}" name="phno2" required></td>
+      </tr>
+      <tr>
+        <td><label name="mode">Class Mode:</label></td>
+        <td>
+
+          <select id="mode" name="mode" th:field="*{classMode}" required>
+
+            <option value="offline">offline</option>
+            <option value="online">online</option>
+
+          </select>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td><label name="course">Course:</label></td>
+        <td>
+
+          <select id="course" th:field="*{courseName}" required>
+
+            <option value="java">java</option>
+            <option value="spring boot">spring boot</option>
+            <option value="c">c</option>
+            <option value="pyton">pyton</option>
+
+          </select>
+
+
+        </td>
+      </tr>
+
+      <tr>
+        <td><label name="EnqStatus">Enquiry Status:</label></td>
+        <td>
+
+          <select id="enqstatus" th:field="*{enqStatus}" required>
+
+            <option value="enrolled">enrolled</option>
+            <option value="open">open</option>
+            <option value="lost">lost</option>
+          </select>
+
+
+        </td>
+      </tr>
+
+      <tr>
+        <td><input type="submit" value="save" class="btn btn-primary"></td>
+      </tr>
+      <tr>
+        <td><a href="#" class="p-2 mb-2 bg-dark text-white">view All Enquires</a></td>
+      </tr>
+    </table>
+
+  </form>
+
+
+
+
+</body>
+
+</html>
